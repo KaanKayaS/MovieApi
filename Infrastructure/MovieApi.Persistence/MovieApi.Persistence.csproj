@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\MovieApi.Application\MovieApi.Application.csproj" />
     <ProjectReference Include="..\..\Core\MovieApi.Domain\MovieApi.Domain.csproj" />
   </ItemGroup>
 
