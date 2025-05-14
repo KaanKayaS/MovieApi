@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MovieApi.Application.Exceptions;
 using MovieApi.Application.Interfaces.Repositories;
 using MovieApi.Application.Interfaces.UnitOfWorks;
 using MovieApi.Persistence.Context;
@@ -25,6 +26,9 @@ namespace MovieApi.Persistence
             services.AddScoped(typeof(IWriteRepository<>),typeof(WriteRepository<>));
 
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+
+            services.AddTransient<ExceptionMiddleware>();
+
         }
     }
 }
