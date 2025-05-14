@@ -1,4 +1,5 @@
 using MovieApi.Persistence;
+using MovieApi.Application;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ builder.Configuration
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional:true);
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplicationService(builder.Configuration);
 
 var app = builder.Build();
 
