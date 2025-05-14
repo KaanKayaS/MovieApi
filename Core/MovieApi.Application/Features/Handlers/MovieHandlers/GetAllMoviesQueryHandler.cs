@@ -36,6 +36,7 @@ namespace MovieApi.Application.Features.Handlers.MovieHandlers
 
              return mapper.Map<IList<GetAllMoviesQueryResult>>(values);
 
+
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieApi.Application.Features.Queries.MovieQueries;
+using MovieApi.Application.Features.Results.MovieResults;
 
 namespace MovieApi.Api.Controllers
 {
@@ -20,6 +21,13 @@ namespace MovieApi.Api.Controllers
         public async Task<IActionResult> GetAllMovie()
         {
             var values = await mediator.Send(new GetAllMoviesQuery());
+            return Ok(values);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetLatestTop5Movie()
+        {
+            var values = await mediator.Send(new GetLatestTop5MovieQuery());
             return Ok(values);
         }
     }

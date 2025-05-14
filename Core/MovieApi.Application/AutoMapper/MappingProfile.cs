@@ -35,6 +35,11 @@ namespace MovieApi.Application.AutoMapper
              .ReverseMap();
 
 
+            CreateMap<Movie, GetLatestTop5MovieQueryResult>()
+               .ReverseMap();
+
+
         }
     }
+    
 }
