@@ -16,8 +16,7 @@ namespace MovieApi.Persistence.Configurations
             Director director = new()
             {
                 Id = 1,
-                Name = "Cristopher",
-                Surname = "Nolan",
+                FullName = "Cristopher Nolan",
                 CreatedDate = DateTime.Now,
                 IsDeleted = false
             };

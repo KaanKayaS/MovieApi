@@ -9,8 +9,7 @@ namespace MovieApi.Domain.Entities
 {
     public class Director : EntityBase
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public string FullName { get; set; }
         public ICollection<Movie> Movies { get; set; }
         public ICollection<Series> Series { get; set; }
     }

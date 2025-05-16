@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MovieApi.Application.Features.Commands.MovieCommands;
 using MovieApi.Application.Features.Queries.MovieQueries;
 using MovieApi.Application.Features.Results.MovieResults;
 
@@ -29,6 +30,13 @@ namespace MovieApi.Api.Controllers
         {
             var values = await mediator.Send(new GetLatestTop5MovieQuery());
             return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateMovie(CreateMovieCommand command)
+        {
+            await mediator.Send(command);
+            return Ok("Film Başarıyla oluşturuldu");
         }
     }
 }
