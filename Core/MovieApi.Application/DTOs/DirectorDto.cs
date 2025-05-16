@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Application.DTOs
 {
-    public class ActorDto
+    public class DirectorDto
     {
         public int? Id { get; set; }
         public string FullName { get; set; }
-        public string Image { get; set; }
     }
 }

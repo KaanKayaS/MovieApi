@@ -17,8 +17,7 @@ namespace MovieApi.Persistence.Configurations
                new Actor
                {
                    Id = 1,
-                   Name = "John",
-                   Surname = "Smith",
+                   FullName = "John Smith",
                    Image = "aa",
                    CreatedDate = DateTime.Now,
                    IsDeleted = false
@@ -26,8 +25,7 @@ namespace MovieApi.Persistence.Configurations
                new Actor
                {
                    Id = 2,
-                   Name = "Emily",
-                   Surname = "Blunt",
+                   FullName = "Emily Blunt",
                    Image = "aa",
                    CreatedDate = DateTime.Now,
                    IsDeleted = false

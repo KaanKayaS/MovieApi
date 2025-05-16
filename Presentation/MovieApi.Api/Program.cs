@@ -1,6 +1,9 @@
 using MovieApi.Persistence;
 using MovieApi.Application;
 using MovieApi.Application.Exceptions;
+using MovieApi.Domain.Entities;
+using MovieApi.Api;
+using System.ComponentModel;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+ 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
