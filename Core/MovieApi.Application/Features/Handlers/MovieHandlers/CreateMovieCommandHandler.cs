@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MovieApi.Application.DTOs;
 using MovieApi.Application.Features.Commands.MovieCommands;
+using MovieApi.Application.Features.Rules;
 using MovieApi.Application.Interfaces.UnitOfWorks;
 using MovieApi.Domain.Entities;
 using System;
@@ -16,9 +17,12 @@ namespace MovieApi.Application.Features.Handlers.MovieHandlers
     public class CreateMovieCommandHandler : IRequestHandler<CreateMovieCommand, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
-        public CreateMovieCommandHandler(IUnitOfWork unitOfWork)
+        private readonly MovieRules movieRules;
+
+        public CreateMovieCommandHandler(IUnitOfWork unitOfWork, MovieRules movieRules)
         {
             this.unitOfWork = unitOfWork;
+            this.movieRules = movieRules;
         }
 
         public async Task<Unit> Handle(CreateMovieCommand request, CancellationToken cancellationToken)
@@ -30,6 +34,11 @@ namespace MovieApi.Application.Features.Handlers.MovieHandlers
             var actors = await unitOfWork.GetReadRepository<Actor>()
                .Find(a => request.ActorIds.Contains(a.Id))
                .ToListAsync();
+
+            IList<Movie> movies = await unitOfWork.GetReadRepository<Movie>().GetAllAsync();
+
+            await movieRules.MovieNameMustNotBeSame(movies, request.Name);
+
 
             await unitOfWork.GetWriteRepository<Movie>().AddAsync(new Movie
             {

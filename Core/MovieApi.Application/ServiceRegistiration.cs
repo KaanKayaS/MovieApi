@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MovieApi.Application.Exceptions;
+using MovieApi.Application.Features.Rules;
 
 namespace MovieApi.Application
 {
@@ -26,6 +28,9 @@ namespace MovieApi.Application
             ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehavior<,>));
+
+            services.AddTransient<ExceptionMiddleware>();
+            services.AddTransient<MovieRules>();
 
         }
     }
