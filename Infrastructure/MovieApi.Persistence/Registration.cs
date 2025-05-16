@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MovieApi.Application.Exceptions;
 using MovieApi.Application.Interfaces.Repositories;
 using MovieApi.Application.Interfaces.UnitOfWorks;
+using MovieApi.Domain.Entities;
 using MovieApi.Persistence.Context;
 using MovieApi.Persistence.Repositories;
 using MovieApi.Persistence.UnitOfWorks;
@@ -26,6 +27,18 @@ namespace MovieApi.Persistence
             services.AddScoped(typeof(IWriteRepository<>),typeof(WriteRepository<>));
 
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+
+            services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredLength = 2;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireDigit = false;
+                opt.SignIn.RequireConfirmedEmail = false;
+            })
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<AppDbContext>();
 
         }
     }

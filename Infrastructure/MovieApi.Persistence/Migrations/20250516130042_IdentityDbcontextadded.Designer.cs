@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieApi.Persistence.Context;
 
@@ -11,9 +12,11 @@ using MovieApi.Persistence.Context;
 namespace MovieApi.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250516130042_IdentityDbcontextadded")]
+    partial class IdentityDbcontextadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -239,7 +242,7 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 16, 14, 6, 714, DateTimeKind.Local).AddTicks(9637),
+                            CreatedDate = new DateTime(2025, 5, 16, 16, 0, 42, 29, DateTimeKind.Local).AddTicks(4890),
                             FullName = "John Smith",
                             Image = "aa",
                             IsDeleted = false
@@ -247,7 +250,7 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 5, 16, 16, 14, 6, 714, DateTimeKind.Local).AddTicks(9640),
+                            CreatedDate = new DateTime(2025, 5, 16, 16, 0, 42, 29, DateTimeKind.Local).AddTicks(4893),
                             FullName = "Emily Blunt",
                             Image = "aa",
                             IsDeleted = false
@@ -280,7 +283,7 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 16, 14, 6, 715, DateTimeKind.Local).AddTicks(782),
+                            CreatedDate = new DateTime(2025, 5, 16, 16, 0, 42, 29, DateTimeKind.Local).AddTicks(6319),
                             IsDeleted = false,
                             Name = "TR"
                         });
@@ -312,7 +315,7 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 16, 14, 6, 715, DateTimeKind.Local).AddTicks(1701),
+                            CreatedDate = new DateTime(2025, 5, 16, 16, 0, 42, 29, DateTimeKind.Local).AddTicks(8208),
                             FullName = "Cristopher Nolan",
                             IsDeleted = false
                         });
@@ -344,14 +347,14 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 16, 14, 6, 715, DateTimeKind.Local).AddTicks(2601),
+                            CreatedDate = new DateTime(2025, 5, 16, 16, 0, 42, 29, DateTimeKind.Local).AddTicks(9157),
                             IsDeleted = false,
                             Name = "Korku"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 5, 16, 16, 14, 6, 715, DateTimeKind.Local).AddTicks(2603),
+                            CreatedDate = new DateTime(2025, 5, 16, 16, 0, 42, 29, DateTimeKind.Local).AddTicks(9158),
                             IsDeleted = false,
                             Name = "Gerilim"
                         });
@@ -411,7 +414,7 @@ namespace MovieApi.Persistence.Migrations
                         {
                             Id = 1,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 16, 14, 6, 715, DateTimeKind.Local).AddTicks(3443),
+                            CreatedDate = new DateTime(2025, 5, 16, 16, 0, 42, 30, DateTimeKind.Local).AddTicks(98),
                             DirectorId = 1,
                             Duration = new TimeSpan(0, 2, 30, 0, 0),
                             Image = "aaa",
@@ -419,7 +422,7 @@ namespace MovieApi.Persistence.Migrations
                             IsDeleted = false,
                             MoviePlot = "gerilim dolu bir kovalamaca",
                             Name = "Yıldızlararası",
-                            PublicationDate = new DateTime(2025, 5, 16, 16, 14, 6, 715, DateTimeKind.Local).AddTicks(3440)
+                            PublicationDate = new DateTime(2025, 5, 16, 16, 0, 42, 30, DateTimeKind.Local).AddTicks(94)
                         });
                 });
 
@@ -508,6 +511,9 @@ namespace MovieApi.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<double>("ImdbPoint")
                         .HasColumnType("float");
