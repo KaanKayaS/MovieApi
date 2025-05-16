@@ -27,8 +27,6 @@ namespace MovieApi.Persistence
 
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
-            services.AddTransient<ExceptionMiddleware>();
-
         }
     }
 }

@@ -18,11 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Exceptions\" />
-    <Folder Include="Features\Rules\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MovieApi.Domain\MovieApi.Domain.csproj" />
   </ItemGroup>
 

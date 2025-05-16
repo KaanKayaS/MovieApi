@@ -43,8 +43,7 @@ namespace MovieApi.Application.Exceptions
 
             List<string> errors = new()
             {
-                exception.Message,
-                exception.InnerException?.ToString()
+               $"Hata mesajı : {exception.Message}"
             };
 
             return httpContext.Response.WriteAsync(new ExceptionModel()
