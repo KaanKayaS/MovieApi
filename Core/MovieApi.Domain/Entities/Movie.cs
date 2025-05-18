@@ -17,10 +17,11 @@ namespace MovieApi.Domain.Entities
         public int CountryId { get; set; }
         public string Image { get; set; }
         public TimeSpan Duration { get; set; }
+        public bool IsTrDubbing { get; set; }
+        public bool IsSubtitle { get; set; }
         public Country Country { get; set; }
         public Director Director { get; set; }
         public ICollection<Genre> Genres { get; set; }
         public ICollection<Actor> Actors { get; set; }
-
     }
 }
