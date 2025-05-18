@@ -28,15 +28,12 @@ namespace MovieApi.Persistence.Context
         public DbSet<Director> Directors { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Series> Series { get; set; }
-        public DbSet<SeriesImdb> SeriesImdbs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Entity<SeriesImdb>()
-              .HasKey(si => new { si.SeriesId, si.Season });
         }
 
     }
