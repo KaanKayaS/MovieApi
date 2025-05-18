@@ -31,6 +31,7 @@ namespace MovieApi.Application
 
             services.AddTransient<ExceptionMiddleware>();
             services.AddTransient<MovieRules>();
+            services.AddTransient<AuthRules>();
 
         }
     }

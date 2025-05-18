@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MovieApi.Application.DTOs;
 using MovieApi.Application.Features.Commands.MovieCommands;
+using MovieApi.Application.Features.Commands.RegisterCommands;
 using MovieApi.Application.Features.Results.MovieResults;
 using MovieApi.Domain.Entities;
 using System;
@@ -46,6 +47,10 @@ namespace MovieApi.Application.AutoMapper
 
             CreateMap<ActorDto, Actor>();
             CreateMap<DirectorDto, Director>();
+
+
+            CreateMap<RegisterCommand, User>()
+               .ReverseMap();
 
 
         }
