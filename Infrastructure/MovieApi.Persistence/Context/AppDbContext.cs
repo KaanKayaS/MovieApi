@@ -28,12 +28,25 @@ namespace MovieApi.Persistence.Context
         public DbSet<Director> Directors { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Series> Series { get; set; }
+        public DbSet<CommentSeries> CommentSeries { get; set; }
+        public DbSet<CommentMovie> CommentMovies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            modelBuilder.Entity<CommentMovie>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.CommentMovies)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<CommentSeries>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.CommentSeries)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
     }

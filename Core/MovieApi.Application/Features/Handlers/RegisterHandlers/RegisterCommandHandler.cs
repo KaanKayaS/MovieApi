@@ -51,8 +51,8 @@ namespace MovieApi.Application.Features.Handlers.RegisterHandlers
                         NormalizedName = "USER",
                         ConcurrencyStamp = Guid.NewGuid().ToString()
                     });
-
                 await userManager.AddToRoleAsync(user, "user");
+               
             }
 
             return Unit.Value;

@@ -18,5 +18,11 @@ namespace MovieApi.Application.Features.Rules
 
             return Task.CompletedTask;
         }
+
+        public Task MovieNotFound(Movie movie)
+        {
+            if (movie == null) throw new MovieNotFoundException();
+            return Task.CompletedTask;
+        }
     }
 }

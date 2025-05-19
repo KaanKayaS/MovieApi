@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace MovieApi.Persistence.Configurations
 {
@@ -17,19 +18,37 @@ namespace MovieApi.Persistence.Configurations
                new Actor
                {
                    Id = 1,
-                   FullName = "John Smith",
+                   FullName = "Matthew McConaughey",
                    Image = "aa",
-                   CreatedDate = DateTime.Now,
+                   CreatedDate = DateTime.UtcNow,
                    IsDeleted = false
                },
                new Actor
                {
                    Id = 2,
-                   FullName = "Emily Blunt",
+                   FullName = "Jessica Chastain",
                    Image = "aa",
-                   CreatedDate = DateTime.Now,
+                   CreatedDate = DateTime.UtcNow,
                    IsDeleted = false
-               }
+               },
+
+               new Actor
+               {
+                   Id = 3,
+                   FullName = "Harold Perrineau Jr.",
+                   Image = "aa",
+                   CreatedDate = DateTime.UtcNow,
+                   IsDeleted = false
+               },
+
+                new Actor
+                {
+                    Id = 4,
+                    FullName = "Scott McCord",
+                    Image = "aa",
+                    CreatedDate = DateTime.UtcNow,
+                    IsDeleted = false
+                }
            );
         }
     }

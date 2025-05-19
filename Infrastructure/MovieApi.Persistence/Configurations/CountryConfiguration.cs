@@ -13,15 +13,21 @@ namespace MovieApi.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Country> builder)
         {
-            Country country = new()
+            builder.HasData(new Country
             {
                 Id = 1,
                 Name = "TR",
                 CreatedDate = DateTime.Now,
-                IsDeleted = false        
-            };
+                IsDeleted = false
+            });
 
-            builder.HasData(country);
+            builder.HasData(new Country
+            {
+                Id = 2,
+                Name = "ABD",
+                CreatedDate = DateTime.Now,
+                IsDeleted = false
+            });
         }
     }
 }

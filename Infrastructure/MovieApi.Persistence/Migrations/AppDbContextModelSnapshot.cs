@@ -62,6 +62,18 @@ namespace MovieApi.Persistence.Migrations
                     b.HasIndex("SeriesId");
 
                     b.ToTable("ActorSeries");
+
+                    b.HasData(
+                        new
+                        {
+                            ActorsId = 3,
+                            SeriesId = 1
+                        },
+                        new
+                        {
+                            ActorsId = 4,
+                            SeriesId = 1
+                        });
                 });
 
             modelBuilder.Entity("GenreMovie", b =>
@@ -81,12 +93,17 @@ namespace MovieApi.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            GenresId = 1,
+                            GenresId = 4,
                             MoviesId = 1
                         },
                         new
                         {
-                            GenresId = 2,
+                            GenresId = 5,
+                            MoviesId = 1
+                        },
+                        new
+                        {
+                            GenresId = 6,
                             MoviesId = 1
                         });
                 });
@@ -104,6 +121,23 @@ namespace MovieApi.Persistence.Migrations
                     b.HasIndex("SeriesId");
 
                     b.ToTable("GenreSeries");
+
+                    b.HasData(
+                        new
+                        {
+                            GenresId = 4,
+                            SeriesId = 1
+                        },
+                        new
+                        {
+                            GenresId = 1,
+                            SeriesId = 1
+                        },
+                        new
+                        {
+                            GenresId = 2,
+                            SeriesId = 1
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -239,19 +273,101 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 19, 58, 53, 633, DateTimeKind.Local).AddTicks(7231),
-                            FullName = "John Smith",
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(1024),
+                            FullName = "Matthew McConaughey",
                             Image = "aa",
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 5, 16, 19, 58, 53, 633, DateTimeKind.Local).AddTicks(7234),
-                            FullName = "Emily Blunt",
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(1027),
+                            FullName = "Jessica Chastain",
+                            Image = "aa",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(1028),
+                            FullName = "Harold Perrineau Jr.",
+                            Image = "aa",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(1029),
+                            FullName = "Scott McCord",
                             Image = "aa",
                             IsDeleted = false
                         });
+                });
+
+            modelBuilder.Entity("MovieApi.Domain.Entities.CommentMovie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CommentMovies");
+                });
+
+            modelBuilder.Entity("MovieApi.Domain.Entities.CommentSeries", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SeriesId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SeriesId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CommentSeries");
                 });
 
             modelBuilder.Entity("MovieApi.Domain.Entities.Country", b =>
@@ -280,9 +396,16 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 19, 58, 53, 633, DateTimeKind.Local).AddTicks(8402),
+                            CreatedDate = new DateTime(2025, 5, 19, 13, 49, 15, 830, DateTimeKind.Local).AddTicks(2218),
                             IsDeleted = false,
                             Name = "TR"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2025, 5, 19, 13, 49, 15, 830, DateTimeKind.Local).AddTicks(2244),
+                            IsDeleted = false,
+                            Name = "ABD"
                         });
                 });
 
@@ -312,8 +435,15 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 19, 58, 53, 633, DateTimeKind.Local).AddTicks(9387),
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(3295),
                             FullName = "Cristopher Nolan",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(3313),
+                            FullName = "Jack Bender",
                             IsDeleted = false
                         });
                 });
@@ -344,16 +474,51 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 19, 58, 53, 634, DateTimeKind.Local).AddTicks(277),
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4181),
                             IsDeleted = false,
                             Name = "Korku"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 5, 16, 19, 58, 53, 634, DateTimeKind.Local).AddTicks(279),
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4182),
                             IsDeleted = false,
                             Name = "Gerilim"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4183),
+                            IsDeleted = false,
+                            Name = "Aile"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4184),
+                            IsDeleted = false,
+                            Name = "Bilim Kurgu"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4185),
+                            IsDeleted = false,
+                            Name = "Aksiyon"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4186),
+                            IsDeleted = false,
+                            Name = "Macera"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4187),
+                            IsDeleted = false,
+                            Name = "Komedi"
                         });
                 });
 
@@ -416,18 +581,18 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CountryId = 1,
-                            CreatedDate = new DateTime(2025, 5, 16, 19, 58, 53, 634, DateTimeKind.Local).AddTicks(1154),
+                            CountryId = 2,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(5093),
                             DirectorId = 1,
-                            Duration = new TimeSpan(0, 2, 30, 0, 0),
+                            Duration = new TimeSpan(0, 2, 49, 0, 0),
                             Image = "aaa",
-                            ImdbPoint = 9.5,
+                            ImdbPoint = 8.6999999999999993,
                             IsDeleted = false,
-                            IsSubtitle = false,
-                            IsTrDubbing = false,
-                            MoviePlot = "gerilim dolu bir kovalamaca",
+                            IsSubtitle = true,
+                            IsTrDubbing = true,
+                            MoviePlot = "Filmin odaklandığı yakın gelecekte yeryüzündeki yaşam; artan kuraklık ve iklim değişiklikleri nedeniyle tehlikeye girmiştir. İnsan ırkı yok olma tehlikesiyle karşı karşıyadır. Bu sırada yeni keşfedilen bir solucan deliği, tüm insanlığın umudu hâline gelir. Bir grup astronot-kaşif, buradan geçip boyut değiştirerek daha önce hiçbir insanoğlunun erişemediği yerlere ulaşmak ve insanoğlunun yeni yaşam alanlarını araştırmakla görevlendirilir. Bu kaşifler, geçen 1 saatin dünyadaki 7 yıla bedel olduğu bir ortamda hızlı ve cesur davranmak zorundadır.",
                             Name = "Yıldızlararası",
-                            PublicationDate = new DateTime(2025, 5, 16, 19, 58, 53, 634, DateTimeKind.Local).AddTicks(1147)
+                            PublicationDate = new DateTime(2014, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -513,6 +678,24 @@ namespace MovieApi.Persistence.Migrations
                     b.HasIndex("DirectorId");
 
                     b.ToTable("Series");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CountryId = 2,
+                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(6416),
+                            DirectorId = 2,
+                            Image = "aaa",
+                            ImdbPoint = 7.7999999999999998,
+                            IsDeleted = false,
+                            IsSubtitle = true,
+                            IsTrDubbing = true,
+                            Name = "From",
+                            PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(2022),
+                            SeasonCount = 3,
+                            SeriesPlot = "İsteksiz sakinler, normallik duygusunu sürdürmek ve bir çıkış yolu aramak için savaşırken, aynı zamanda, güneş battığında ortaya çıkan korkunç yaratıklar da dahil olmak üzere, çevredeki ormanın tehditlerine karşı da hayatta kalmak zorundadırlar."
+                        });
                 });
 
             modelBuilder.Entity("MovieApi.Domain.Entities.User", b =>
@@ -702,6 +885,44 @@ namespace MovieApi.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MovieApi.Domain.Entities.CommentMovie", b =>
+                {
+                    b.HasOne("MovieApi.Domain.Entities.Movie", "Movie")
+                        .WithMany("CommentMovies")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieApi.Domain.Entities.User", "User")
+                        .WithMany("CommentMovies")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MovieApi.Domain.Entities.CommentSeries", b =>
+                {
+                    b.HasOne("MovieApi.Domain.Entities.Series", "Series")
+                        .WithMany("CommentSeries")
+                        .HasForeignKey("SeriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieApi.Domain.Entities.User", "User")
+                        .WithMany("CommentSeries")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Series");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MovieApi.Domain.Entities.Movie", b =>
                 {
                     b.HasOne("MovieApi.Domain.Entities.Country", "Country")
@@ -745,6 +966,23 @@ namespace MovieApi.Persistence.Migrations
                     b.Navigation("Movies");
 
                     b.Navigation("Series");
+                });
+
+            modelBuilder.Entity("MovieApi.Domain.Entities.Movie", b =>
+                {
+                    b.Navigation("CommentMovies");
+                });
+
+            modelBuilder.Entity("MovieApi.Domain.Entities.Series", b =>
+                {
+                    b.Navigation("CommentSeries");
+                });
+
+            modelBuilder.Entity("MovieApi.Domain.Entities.User", b =>
+                {
+                    b.Navigation("CommentMovies");
+
+                    b.Navigation("CommentSeries");
                 });
 #pragma warning restore 612, 618
         }

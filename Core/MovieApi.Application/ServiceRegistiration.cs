@@ -32,6 +32,9 @@ namespace MovieApi.Application
             services.AddTransient<ExceptionMiddleware>();
             services.AddTransient<MovieRules>();
             services.AddTransient<AuthRules>();
+            services.AddTransient<RefreshTokenRules>();
+            services.AddTransient<SeriesRules>();
+            services.AddTransient<CommentRules>();
 
         }
     }

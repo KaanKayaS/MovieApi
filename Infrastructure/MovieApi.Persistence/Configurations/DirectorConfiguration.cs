@@ -13,15 +13,22 @@ namespace MovieApi.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Director> builder)
         {
-            Director director = new()
+            builder.HasData(new Director
             {
                 Id = 1,
                 FullName = "Cristopher Nolan",
-                CreatedDate = DateTime.Now,
+                CreatedDate = DateTime.UtcNow,
                 IsDeleted = false
-            };
+            });
 
-            builder.HasData(director);
+            builder.HasData(new Director
+            {
+                Id = 2,
+                FullName = "Jack Bender",
+                CreatedDate = DateTime.UtcNow,
+                IsDeleted = false
+            });
+
         }
     }
 }

@@ -5,6 +5,8 @@ using MovieApi.Application.Exceptions;
 using MovieApi.Domain.Entities;
 using MovieApi.Api;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Identity;
+using MovieApi.Persistence.Configurations;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -60,6 +62,9 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+
+// wwwroot'u aktif hale getirmek için:
+app.UseStaticFiles();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
