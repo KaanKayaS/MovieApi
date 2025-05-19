@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieApi.Application.Features.Commands.MovieCommands;
@@ -19,6 +20,7 @@ namespace MovieApi.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllMovie()
         {
             var values = await mediator.Send(new GetAllMoviesQuery());

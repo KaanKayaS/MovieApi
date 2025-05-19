@@ -23,5 +23,6 @@ namespace MovieApi.Domain.Entities
         public Director Director { get; set; }
         public ICollection<Genre> Genres { get; set; }
         public ICollection<Actor> Actors { get; set; }
+        public ICollection<CommentSeries> CommentSeries { get; set; }
     }
 }

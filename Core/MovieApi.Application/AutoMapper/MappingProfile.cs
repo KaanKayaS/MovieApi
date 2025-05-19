@@ -52,6 +52,9 @@ namespace MovieApi.Application.AutoMapper
             CreateMap<RegisterCommand, User>()
                .ReverseMap();
 
+            CreateMap<CreateAdminCommand, User>()
+             .ReverseMap();
+
 
         }
     }

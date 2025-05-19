@@ -20,4 +20,8 @@
     <ProjectReference Include="..\..\Infrastructure\MovieApi.Persistence\MovieApi.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
