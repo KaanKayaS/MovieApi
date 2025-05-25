@@ -273,7 +273,7 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(1024),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(5237),
                             FullName = "Matthew McConaughey",
                             Image = "aa",
                             IsDeleted = false
@@ -281,7 +281,7 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(1027),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(5240),
                             FullName = "Jessica Chastain",
                             Image = "aa",
                             IsDeleted = false
@@ -289,7 +289,7 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(1028),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(5241),
                             FullName = "Harold Perrineau Jr.",
                             Image = "aa",
                             IsDeleted = false
@@ -297,7 +297,7 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(1029),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(5243),
                             FullName = "Scott McCord",
                             Image = "aa",
                             IsDeleted = false
@@ -396,14 +396,14 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 19, 13, 49, 15, 830, DateTimeKind.Local).AddTicks(2218),
+                            CreatedDate = new DateTime(2025, 5, 24, 22, 12, 30, 890, DateTimeKind.Local).AddTicks(6575),
                             IsDeleted = false,
                             Name = "TR"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 5, 19, 13, 49, 15, 830, DateTimeKind.Local).AddTicks(2244),
+                            CreatedDate = new DateTime(2025, 5, 24, 22, 12, 30, 890, DateTimeKind.Local).AddTicks(6606),
                             IsDeleted = false,
                             Name = "ABD"
                         });
@@ -435,14 +435,14 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(3295),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(8030),
                             FullName = "Cristopher Nolan",
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(3313),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(8083),
                             FullName = "Jack Bender",
                             IsDeleted = false
                         });
@@ -474,49 +474,49 @@ namespace MovieApi.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4181),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(9086),
                             IsDeleted = false,
                             Name = "Korku"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4182),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(9087),
                             IsDeleted = false,
                             Name = "Gerilim"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4183),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(9089),
                             IsDeleted = false,
                             Name = "Aile"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4184),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(9090),
                             IsDeleted = false,
                             Name = "Bilim Kurgu"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4185),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(9091),
                             IsDeleted = false,
                             Name = "Aksiyon"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4186),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(9092),
                             IsDeleted = false,
                             Name = "Macera"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(4187),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 890, DateTimeKind.Utc).AddTicks(9093),
                             IsDeleted = false,
                             Name = "Komedi"
                         });
@@ -582,7 +582,7 @@ namespace MovieApi.Persistence.Migrations
                         {
                             Id = 1,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(5093),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 891, DateTimeKind.Utc).AddTicks(89),
                             DirectorId = 1,
                             Duration = new TimeSpan(0, 2, 49, 0, 0),
                             Image = "aaa",
@@ -684,7 +684,7 @@ namespace MovieApi.Persistence.Migrations
                         {
                             Id = 1,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2025, 5, 19, 10, 49, 15, 830, DateTimeKind.Utc).AddTicks(6416),
+                            CreatedDate = new DateTime(2025, 5, 24, 19, 12, 30, 891, DateTimeKind.Utc).AddTicks(1679),
                             DirectorId = 2,
                             Image = "aaa",
                             ImdbPoint = 7.7999999999999998,

@@ -9,15 +9,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{10CC9A90-ACBF-4241-B2D7-8CDB623E107A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieApi.Application", "Core\MovieApi.Application\MovieApi.Application.csproj", "{3A68CED4-BCA6-4DD3-A336-29A94BF342EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieApi.Application", "Core\MovieApi.Application\MovieApi.Application.csproj", "{3A68CED4-BCA6-4DD3-A336-29A94BF342EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieApi.Domain", "Core\MovieApi.Domain\MovieApi.Domain.csproj", "{08F04B6A-22D1-438C-AB91-BA8C7CFF909F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieApi.Domain", "Core\MovieApi.Domain\MovieApi.Domain.csproj", "{08F04B6A-22D1-438C-AB91-BA8C7CFF909F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieApi.Infrastructure", "Infrastructure\MovieApi.Infrastructure\MovieApi.Infrastructure.csproj", "{60B04ED6-D237-4BCD-B27F-7F8E4E2A455C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieApi.Infrastructure", "Infrastructure\MovieApi.Infrastructure\MovieApi.Infrastructure.csproj", "{60B04ED6-D237-4BCD-B27F-7F8E4E2A455C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieApi.Persistence", "Infrastructure\MovieApi.Persistence\MovieApi.Persistence.csproj", "{37F78381-19A2-4C35-9CD9-C22F17DA7504}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieApi.Persistence", "Infrastructure\MovieApi.Persistence\MovieApi.Persistence.csproj", "{37F78381-19A2-4C35-9CD9-C22F17DA7504}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieApi.Api", "Presentation\MovieApi.Api\MovieApi.Api.csproj", "{4B649CF0-747A-4704-9BCE-4D0591522936}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieApi.Api", "Presentation\MovieApi.Api\MovieApi.Api.csproj", "{4B649CF0-747A-4704-9BCE-4D0591522936}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{381EE919-B23A-44B3-ABF5-80DCD94BDF86}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
