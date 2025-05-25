@@ -7,6 +7,8 @@ using MovieApi.Api;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Identity;
 using MovieApi.Persistence.Configurations;
+using MovieApi.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -63,11 +65,18 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    context.Database.Migrate();
+}
+
+
 // wwwroot'u aktif hale getirmek için:
 app.UseStaticFiles();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();

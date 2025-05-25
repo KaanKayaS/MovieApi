@@ -28,6 +28,13 @@ namespace MovieApi.Api.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetAllMovieTest()
+        {
+            var values = await mediator.Send(new GetAllMoviesQuery());
+            return Ok(values);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetLatestTop5Movie()
         {
             var values = await mediator.Send(new GetLatestTop5MovieQuery());
