@@ -2,8 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using MovieApi.Application.Interfaces.Events;
 using MovieApi.Application.Interfaces.Tokens;
+using MovieApi.Infrastructure.EmailSender;
+using MovieApi.Infrastructure.RabbitMQ;
 using MovieApi.Infrastructure.Tokens;
+using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -41,6 +45,24 @@ namespace MovieApi.Infrastructure
                     ClockSkew = TimeSpan.Zero,
                 };
             });
+
+            services.AddScoped<IEmailSender, SmtpEmailSender>();
+            services.AddHostedService<EmailConfirmationConsumer>();
+
+            services.AddSingleton<IConnection>(sp =>
+            {
+                var factory = new ConnectionFactory()
+                {
+                    HostName = configuration["RabbitMQ:Host"],
+                    UserName = configuration["RabbitMQ:Username"],
+                    Password = configuration["RabbitMQ:Password"]
+                };
+                return factory.CreateConnection();
+            });
+
+            services.AddScoped<IMessagePublisher, RabbitMqPublisher>();
+
+
         }
     }
 }

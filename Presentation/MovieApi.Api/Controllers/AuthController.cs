@@ -1,10 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MovieApi.Application.Features.Commands.LoginCommands;
 using MovieApi.Application.Features.Commands.RefreshTokenCommands;
 using MovieApi.Application.Features.Commands.RegisterCommands;
 using MovieApi.Application.Features.Commands.RevokeCommands;
+using MovieApi.Domain.Entities;
+using System.Net;
 
 namespace MovieApi.Api.Controllers
 {
@@ -13,17 +16,19 @@ namespace MovieApi.Api.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IMediator mediator;
+        private readonly UserManager<User> userManager;
 
-        public AuthController(IMediator mediator)
+        public AuthController(IMediator mediator, UserManager<User> userManager)
         {
             this.mediator = mediator;
+            this.userManager = userManager;
         }
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterCommand command)
         {
             await mediator.Send(command);
-            return StatusCode(StatusCodes.Status201Created);
+            return StatusCode(StatusCodes.Status201Created,"Lütfen Giriş yapmadan önce Emailinize gelen maili onaylayın!");
         }
 
         [HttpPost]
@@ -61,5 +66,23 @@ namespace MovieApi.Api.Controllers
             await mediator.Send(new RevokeAllCommand());
             return Ok();
         }
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail(string email, string token)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+            if (user == null)
+                return BadRequest("Kullanıcı bulunamadı");
+
+            var decodedToken = WebUtility.UrlDecode(token).Trim();
+
+            var result = await userManager.ConfirmEmailAsync(user, decodedToken);
+
+            if (result.Succeeded)
+                return Ok("Email başarıyla onaylandı.");
+            else
+                return BadRequest("Email onaylama başarısız.");
+        }
+
+
     }
 }

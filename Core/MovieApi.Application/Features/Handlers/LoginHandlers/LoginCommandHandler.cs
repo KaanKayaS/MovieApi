@@ -40,6 +40,11 @@ namespace MovieApi.Application.Features.Handlers.LoginHandlers
             User? user = await userManager.FindByEmailAsync(request.Email);
             bool checkPassword = await userManager.CheckPasswordAsync(user, request.Password);
 
+            if (!await userManager.IsEmailConfirmedAsync(user))
+            {
+                throw new Exception("Lütfen e-posta adresinizi doğrulayınız.");
+            }
+
             await authRules.EmailOrPasswordShouldNotBeInvalid(user, checkPassword);
 
             var roles = await userManager.GetRolesAsync(user);
