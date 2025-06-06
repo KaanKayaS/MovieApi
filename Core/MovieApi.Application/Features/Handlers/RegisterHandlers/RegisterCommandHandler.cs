@@ -3,13 +3,16 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using MovieApi.Application.Bases;
+using MovieApi.Application.DTOs;
 using MovieApi.Application.Features.Commands.RegisterCommands;
 using MovieApi.Application.Features.Rules;
+using MovieApi.Application.Interfaces.Events;
 using MovieApi.Application.Interfaces.UnitOfWorks;
 using MovieApi.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,14 +23,16 @@ namespace MovieApi.Application.Features.Handlers.RegisterHandlers
         private readonly AuthRules authRules;
         private readonly UserManager<User> userManager;
         private readonly RoleManager<Role> roleManager;
+        private readonly IMessagePublisher messagePublisher;
 
         public RegisterCommandHandler(AuthRules authRules, UserManager<User> userManager,
             RoleManager<Role> roleManager , IMapper mapper, IUnitOfWork unitOfWork,
-            IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
+            IHttpContextAccessor httpContextAccessor, IMessagePublisher messagePublisher) : base(mapper, unitOfWork, httpContextAccessor)
         {
             this.authRules = authRules;
             this.userManager = userManager;
             this.roleManager = roleManager;
+            this.messagePublisher = messagePublisher;
         }
         public async Task<Unit> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
@@ -52,7 +57,18 @@ namespace MovieApi.Application.Features.Handlers.RegisterHandlers
                         ConcurrencyStamp = Guid.NewGuid().ToString()
                     });
                 await userManager.AddToRoleAsync(user, "user");
-               
+
+                var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+                var encodedToken = WebUtility.UrlEncode(token);
+
+                var emailMessage = new EmailConfirmationMessage
+                {
+                    Email = user.Email,
+                    Token = encodedToken
+                };
+
+                await messagePublisher.PublishAsync(emailMessage);
+
             }
 
             return Unit.Value;
